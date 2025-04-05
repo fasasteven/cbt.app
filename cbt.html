@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CBT</title>
+</head>
+<body>
+  <main class="main">
+    <h1>CBT QUESTION</h1>
+    <p class="quest" id="showquest"></p>
+    <div class="opt" id="showopt"></div>
+
+    <div class="button">
+      <button class="prev" onclick="prevbtn()">Prev</button>
+      <button class="submit" onclick="submit()">Submit</button>
+      <button class="next" onclick="nextbtn()">Next</button>
+    </div>
+  </main>
+
+  <script>
+    let i = 0;
+    const cbt = [
+      {
+        question: "Who is the president of Nigeria?",
+        option: ["Obasanjo", "Atiku", "Buhari", "Tinubu"],
+        answer: "Buhari",
+        chosenanswer: ""
+      },
+      {
+        question: "Who is the president of Nigeria?",
+        option: ["steven", "Atiku", "Buhari", "Tinubu"],
+        answer: "Buhari",
+        chosenanswer: ""
+      },
+      {
+        question: "Who is the president of Nigeria?",
+        option: ["dasola", "Atiku", "Buhari", "Tinubu"],
+        answer: "Buhari",
+        chosenanswer: ""
+      },
+      {
+        question: "Who is the president of Nigeria?",
+        option: ["na me", "Atiku", "Buhari", "Tinubu"],
+        answer: "Buhari",
+        chosenanswer: ""
+      }
+    ];
+
+    const quest = document.getElementById("showquest");
+    const opt = document.getElementById("showopt");
+
+    function renderQuestion() {
+      quest.innerHTML = `<p>${cbt[i].question}</p>`;
+      opt.innerHTML = ""; // Clear previous options
+      cbt[i].option.forEach((el, index) => {
+        opt.innerHTML += `
+          <p>
+            <input type="radio" name="option" value="${el}" id="opt${index}">
+            <label for="opt${index}">${el}</label>
+          </p>
+        `;
+      });
+    }
+
+    function nextbtn() {
+      if (i < cbt.length - 1) {
+        i++;
+        renderQuestion();
+      }
+    }
+
+    function prevbtn() {
+      if (i > 0) {
+        i--;
+        renderQuestion();
+      }
+    }
+
+    function submit() {
+      const selected = document.querySelector('input[name="option"]:checked');
+      if (selected) {
+        cbt[i].chosenanswer = selected.value;
+        alert(`You selected: ${selected.value}`);
+      } else {
+        alert("Please select an option before submitting.");
+      }
+    }
+
+    
+    renderQuestion();
+  </script>
+</body>
+</html>
