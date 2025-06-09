@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="..">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CBT</title>
 </head>
@@ -14,12 +15,13 @@
 
     <div class="button">
       <button class="prev" onclick="prevbtn()">Prev</button>
-      <button class="submit" onclick="submit()">Submit</button>
       <button class="next" onclick="nextbtn()">Next</button>
+      <button class="submit" onclick="submit()">Submit</button>
+
     </div>
   </main>
-
-  <script>
+  <script src="./cbt.js"></script>
+  <!-- <script>
     let i = 0;
     const cbt = [
       {
@@ -87,9 +89,7 @@
         alert("Please select an option before submitting.");
       }
     }
-
-    
     renderQuestion();
-  </script>
+  </script> -->
 </body>
 </html>
